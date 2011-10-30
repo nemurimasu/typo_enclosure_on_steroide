@@ -6,7 +6,11 @@ end
 module TypoEnclosureOnSteroideHelper
   
   def display_mp3(filename, has_ogg)
-    html = "<li><audio controls>"
+    html = "<li><p>Download: "
+    html << "<a href=\"/files/#{filename}.mp3\">#{filename}.mp3</a>"
+    html << " <a href=\"/files/#{filename}.ogg\">#{filename}.ogg</a>" if has_ogg
+    html << "</p>"
+    html << "<audio controls>"
     html << "<source src=\"/files/#{filename}.mp3\" type=\"audio/mpeg\" />"
     html << "<source src=\"/files/#{filename}.ogg\" type=\"audio/ogg\" />" if has_ogg
     html << "<object type='application/x-shockwave-flash' data='/dewplayer.swf?mp3=/files/#{filename}' width='200' height='20'>"
@@ -22,6 +26,7 @@ module TypoEnclosureOnSteroideHelper
   
   def display_simple_file(filename)
     html = "<li>"
+    html << "Download: "
     html << link_to(filename, "/files/#{filename}")
     html << "</li>"
   end
