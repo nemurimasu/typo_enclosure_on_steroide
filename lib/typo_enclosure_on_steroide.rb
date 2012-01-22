@@ -7,27 +7,27 @@ module TypoEnclosureOnSteroideHelper
   
   def display_mp3(filename, has_ogg)
     html = "<li><p>Download: "
-    html << "<a href=\"/files/#{filename}.mp3\">#{filename}.mp3</a>"
-    html << " <a href=\"/files/#{filename}.ogg\">#{filename}.ogg</a>" if has_ogg
+    html << "<a href=\"#{this_blog.base_url}/files/#{filename}.mp3\">#{filename}.mp3</a>"
+    html << " <a href=\"#{this_blog.base_url}/files/#{filename}.ogg\">#{filename}.ogg</a>" if has_ogg
     html << "</p>"
     html << "<audio controls>"
-    html << "<source src=\"/files/#{filename}.mp3\" type=\"audio/mpeg\" />"
-    html << "<source src=\"/files/#{filename}.ogg\" type=\"audio/ogg\" />" if has_ogg
-    html << "<object type='application/x-shockwave-flash' data='/dewplayer.swf?mp3=/files/#{filename}' width='200' height='20'>"
-    html << "<param name='movie' value='/dewplayer.swf?mp3=/files/#{filename}' />"
+    html << "<source src=\"#{this_blog.base_url}/files/#{filename}.mp3\" type=\"audio/mpeg\" />"
+    html << "<source src=\"#{this_blog.base_url}/files/#{filename}.ogg\" type=\"audio/ogg\" />" if has_ogg
+    html << "<object type='application/x-shockwave-flash' data='#{this_blog.base_url}/dewplayer.swf?mp3=#{this_blog.base_url}/files/#{filename}' width='200' height='20'>"
+    html << "<param name='movie' value='#{this_blog.base_url}/dewplayer.swf?mp3=#{this_blog.base_url}/files/#{filename}' />"
     html << "</object></audio></li>"
   end
 
   def display_ogg(filename)
     html = "<li><audio controls>"
-    html << "<source src=\"/files/#{filename}.ogg\" type=\"audio/ogg\" />"
+    html << "<source src=\"#{this_blog.base_url}/files/#{filename}.ogg\" type=\"audio/ogg\" />"
     html << "</audio></li>"
   end
   
   def display_simple_file(filename)
     html = "<li>"
     html << "Download: "
-    html << link_to(filename, "/files/#{filename}")
+    html << link_to(filename, "#{this_blog.base_url}/files/#{filename}")
     html << "</li>"
   end
   
