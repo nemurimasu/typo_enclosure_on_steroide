@@ -19,7 +19,10 @@ module TypoEnclosureOnSteroideHelper
   end
 
   def display_ogg(filename)
-    html = "<li><audio controls>"
+    html = "<li><p>Download: "
+    html << " <a href=\"#{this_blog.base_url}/files/#{filename}.ogg\">#{filename}.ogg</a>"
+    html << "</p>"
+    html << "<audio controls>"
     html << "<source src=\"#{this_blog.base_url}/files/#{filename}.ogg\" type=\"audio/ogg\" />"
     html << "</audio></li>"
   end
